@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log in </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #nav{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 10%;
+          background-color: rgb(192, 211, 208);
+          border-bottom-right-radius: 20px;
+          padding: 20px;
+        }
+        #container{
+            background-color:rgb(85, 111, 150);
+            display: grid;
+             justify-content: center;
+            align-items: center;
+            margin: 200px;
+            padding: 5px;
+            width: 500px;
+            height: 500px;
+        }
+        #container #el{
+            margin: 30px;
+        }
+        #head{
+            text-align: center;
+            border: 1px;
+            background-color: rgb(152, 214, 223);
+            font-size: 20px;
+            padding: 30px;
+
+        }
+        #head:hover{
+            background-color: rgb(111, 139, 139);
+         }
+      
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <h2>Dilip's  blogs</h2>
+        <a href="index.html"> home page </a>
+        <a href="#">contact us</a>
+        <a href="#login">log in</a>
+    </div>
+
+
+     <section id="container">
+        <div id="head">Login with us</div>
+        <form  id="fm">
+            <div id="el">
+                <label for="email">email id or username</label><br>
+             <input type="text" required id="username" placeholder="username or email id">
+            </div>
+        
+            <div id="el">
+                <label for="Password">Password</label> <br>
+             <input type="password" id="password" required placeholder="******">
+            </div>
+
+            <div id="el">
+                <button type="submit"> Login now</button>
+             </div>
+
+        </form>
+        <div>
+            <p>Don't Have Account ? <a href="sign.html">sign up</a></p>
+        </div>
+    </section>
+
+
+
+     <script>
+        let form = document.getElementById("fm");
+        form.addEventListener("submit",function(){
+            let username = document.querySelector("#username").value;
+            let password = document.querySelector("#password").value;
+
+            if(username=="dilip" ||username=="aman")  {
+
+                if(password==`dilip@${1234}`||password==12345){
+                   console.log("login successful")
+                    localStorage.setItem("user", username)
+                   localStorage.setItem("password",password)
+
+                }else{
+                   window,alert("check your password or email id or username")
+                }
+
+            }else{
+                window.alert("invalid username or password")
+            }
+         })
+
+        
+    
+    </script>
+</body>
+</html>

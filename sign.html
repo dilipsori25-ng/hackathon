@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up page</title>
+    <style>
+        div{
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 300px;
+            padding: 100px;
+        }
+    </style>
+</head>
+<body>
+     <div>
+        <h2  >sign up </h2><br>
+        
+    <form id="fm">
+        <p></p>
+        <input type="text" id="name" placeholder="Enter your Name">
+        <p></p>
+        <input type="text" id="pass" placeholder="Enter your Email id">
+        <p></p>
+        <input type="password" placeholder="Enter your password">
+        <p></p>
+        <button type="submit" id="log">sign in</button>
+    </form>
+    </div>
+    <script>
+        var form = document.getElementById("fm");
+        var log = document.getElementById("log")
+        form.onsubmit= function(){
+            let arr=[];
+            arr[0]= document.getElementById("name").value;
+            arr[1]= document.getElementById("pass").value;
+
+           localStorage.setItem("name",arr[0])
+           localStorage.setItem("password",arr[1])
+
+ 
+        }
+       log.addEventListener("click",function(){
+           window.location.href="index.html"
+       })
+    </script>
+</body>
+</html>
