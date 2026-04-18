@@ -3,45 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login system</title>
+    <title>Document</title>
     <style>
-                *{
-            margin: 0;
+        *{
             padding: 0;
+            margin: 0;
             box-sizing: border-box;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         }
-        #nav{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 10%;
-          background-color: rgb(192, 211, 208);
-          border-bottom-right-radius: 20px;
-          padding: 20px;
-        }
+      body {
+  text-align: center;
+  font-family: Arial;
+}
 
+input {
+  padding: 10px;
+  width: 250px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 20px;
+}
     </style>
- </head>
+</head>
+    
 <body>
-<div id="nav">
-       <a href="log.html">login </a>
-       <a href="index.html">Home</a>
+  
  
-</div> 
+  <h1>🎬 Movie Search App</h1>
 
+  <input type="text" id="searchBox" placeholder="Enter movie name">
+  <button onclick="searchMovie()">Search</button>
 
-<div>
-    <h2 style="text-align: center">welcome to home page </h2>
-</div>
+  <div id="result"></div>
 
-
-<p style="text-align: center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus vero, fuga eveniet quidem ipsum facilis eaque consequuntur nihil rerum ea deleniti! Ab tenetur itaque aperiam nostrum accusamus, dolorem error atque libero cumque, necessitatibus laboriosam.</p>
-
-
-
+ </html>
     <script>
+    async function searchMovie() {
+  let movie = document.getElementById("searchBox").value;
 
-        
+  let apiKey = "YOUR_API_KEY"; // yaha apni API key daalo
+
+  let url = `https://www.omdbapi.com/?t=${movie}&apikey=${apiKey}`;
+
+  let response = await fetch(url);
+  let data = await response.json();
+
+  let resultDiv = document.getElementById("result");
+
+  if (data.Response === "True") {
+    resultDiv.innerHTML = `
+      <h2>${data.Title}</h2>
+      <img src="${data.Poster}" />
+      <p>Year: ${data.Year}</p>
+      <p>Genre: ${data.Genre}</p>
+      <p>Plot: ${data.Plot}</p>
+    `;
+  } else {
+    resultDiv.innerHTML = `<p>Movie not found 😢</p>`;
+  }
+}  
     </script>
 </body>
 </html>
